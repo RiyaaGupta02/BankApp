@@ -20,9 +20,9 @@ public class CustomerController {
 
     // for the deposit process working take place update done
     @PostMapping("/accounts/{id}/deposit")
-    public ResponseEntity<Account> deposit(@PathVariable Long id, @RequestBody DepositRequest request) {
-    Account updatedAccount = accountService.deposit(id, request.getAmount());
-    return ResponseEntity.ok(updatedAccount);
+    public ResponseEntity<Customer> deposit(@PathVariable Long id, @RequestBody DepositRequest request) {
+    Customer updated = customerService.deposit(id, request.getAmount());
+    return ResponseEntity.ok(updated);
     }
 
 
