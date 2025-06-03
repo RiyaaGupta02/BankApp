@@ -2,6 +2,9 @@ package com.example.banking.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.CascadeType;
+
 
 @Entity
 public class Transaction {
@@ -60,4 +63,17 @@ public class Transaction {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<Transaction> transactions;
+    
+    public List<Transaction> getTransactions() {
+    return transactions;
+    }
+    
+    public void setTransactions(List<Transaction> transactions) {
+    this.transactions = transactions;
+    }
+
 }
