@@ -7,6 +7,7 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private double balance;
 
     private String name;
     private String email;
@@ -19,4 +20,17 @@ public class Customer {
 
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
+
+    public double getBalance() {
+    return balance;
+    }
+    
+    public void setBalance(double balance) {
+    this.balance = balance;
+    }
+    
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<Transaction> transactions;
+
+
 }
